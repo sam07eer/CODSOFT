@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood-Based Landing Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background 0.5s, color 0.5s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #ff6a00, #ee0979);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.description {
+      max-width: 600px;
+      font-size: 1.1rem;
+      margin: 0 20px 20px 20px;
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    select, button {
+      padding: 10px 15px;
+      font-size: 1rem;
+      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 10px;
+      border: none;
+      background: #6a11cb;
+      background: linear-gradient(to right, #2575fc, #6a11cb);
+      color: white;
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 1.3rem;
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 500px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Mood Themes */
+    .happy {
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      color: #856404;
+    }
+
+    .sad {
+      background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+      color: #0c5460;
+    }
+
+    .curious {
+      background: linear-gradient(135deg, #d3cce3 0%, #e9e4f0 100%);
+      color: #383d41;
+    }
+
+    .motivated {
+      background: linear-gradient(135deg, #c2e59c 0%, #64b3f4 100%);
+      color: #155724;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Your Personalized Mood Landing Page</h1>
+  <p class="description">
+    This is a unique beginner-friendly web development project that combines HTML, CSS, and JavaScript. 
+    It demonstrates how a landing page can adapt to user input, encouraging creativity and practical coding skills.
+  </p>
+
+  <label for="moodSelector">How are you feeling today?</label><br>
+  <select id="moodSelector">
+    <option value="happy">Happy 😊</option>
+    <option value="sad">Sad 😢</option>
+    <option value="curious">Curious 🤔</option>
+    <option value="motivated">Motivated 💪</option>
+  </select>
+  <button onclick="applyMood()">Show My Mood</button>
+
+  <div class="message" id="moodMessage"></div>
+
+  <script>
+    const body = document.body;
+    const message = document.getElementById("moodMessage");
+
+    const moods = {
+      happy: {
+        class: "happy",
+        text: "Happiness is contagious. Spread it! 💛"
+      },
+      sad: {
+        class: "sad",
+        text: "It's okay to feel sad. Better days are coming. 💙"
+      },
+      curious: {
+        class: "curious",
+        text: "Curiosity leads to discovery. Stay curious! 🧠"
+      },
+      motivated: {
+        class: "motivated",
+        text: "You're unstoppable. Keep going! 🚀"
+      }
+    };
+
+    function applyMood() {
+      const selectedMood = document.getElementById("moodSelector").value;
+      
+      // Remove existing mood classes
+      body.className = "";
+      
+      // Apply new class and message
+      const mood = moods[selectedMood];
+      body.classList.add(mood.class);
+      message.textContent = mood.text;
+    }
+  </script>
+
+</body>
+</html>
